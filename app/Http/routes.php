@@ -30,11 +30,11 @@ Route::get('/', function () {
 //    return "Hi About Page";
 //
 //});
-//Route::get('/contact', function () {
-//
-//    return "Contact ME";
-//
-//});
+Route::get('/contact', function () {
+
+    return "Contact ME please";
+
+});
 //
 //Route::get('post/{id}/{name}', function ($id, $name){
 //
