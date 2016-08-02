@@ -346,4 +346,4 @@ Route::get('/contact', function () {
 |
 */
 
-Route::resource('/post', 'PostsController');
+Route::resource('/posts', 'PostsController');

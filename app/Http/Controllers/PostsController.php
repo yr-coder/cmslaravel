@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class PostController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +31,7 @@ class PostController extends Controller
     public function create()
     {
         //
-        echo 'This is create method';
+        return view('posts.create');
     }
 
     /**
@@ -42,6 +43,24 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+//        return $request->title;
+
+        Post::create($request->all());
+
+//        $input = $request->all();
+//
+//        $input['title'] = $request->title;
+//
+//        Post::create($request->all());
+
+//        $post = new Post;
+//
+//        $post->title = $request-title;
+//
+//        $post-save();
+
+
+
     }
 
     /**
