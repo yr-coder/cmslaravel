@@ -10,9 +10,4 @@
         {{csrf_field()}}
     </form>
 
-
-
-
-
-    
-    @yield('footer')
+@endsection

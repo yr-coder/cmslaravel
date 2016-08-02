@@ -14,12 +14,13 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($first, $second)
+    public function index()
     {
         //
+        $posts = Post::all();
+        
+        return view('posts.index', compact('posts'));
 
-
-        echo "The passed arguments are ".$first." ".$second;
 
     }
 
@@ -59,7 +60,7 @@ class PostsController extends Controller
 //
 //        $post-save();
 
-
+        return redirect('/posts');
 
     }
 
