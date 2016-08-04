@@ -4,26 +4,51 @@
 
     <h1>Edit Post</h1>
 
-    <form action="/posts/{{$post->id}}" method="post">
+    {!! Form::model($post, ['method'=>'PATCH', 'action'=>['PostsController@update', $post->id]]) !!}
 
-        <input type="hidden" name="_method" value="PUT">
+    {{csrf_field()}}
 
-        <input type="text" name="title" placeholder="Enter title" value="{{$post->title}}">
-        <br><br>
-        <textarea name="content" id="content" cols="30" rows="10">{{$post->content}}</textarea>
+    <div class="form-group">
+
+        {!! Form::label('title', 'Title:') !!}
+        {!! Form::text('title', null, ['class'=>'form-control']) !!}
         <br>
-        <input type="submit" name="submit" value="Update">
-        {{csrf_field()}}
-    </form>
+        {!! Form::label('content', 'Content:') !!}
+        {!! Form::textarea('content', null, ['class'=>'form-control']) !!}
+
+    </div>
+        <br>
+    {!! Form::submit('Update Post', ['class'=>'btn btn-info']) !!}
+
+
+    {!! Form::close() !!}
+
+    @if(count($errors) > 0)
+
+        <div class="alert alert-danger">
+            <ul>
+
+                @foreach($errors->all() as $error)
+
+                    <li>{{$error}}</li>
+
+
+                @endforeach
+
+
+            </ul>
+        </div>
+
+    @endif
 
     <h1>Delete Post</h1>
 
-    <form action="/posts/{{$post->id}}" method="post">
+    {!! Form::open(['method'=>'DELETE', 'action'=>['PostsController@destroy', $post->id]]) !!}
 
-        <input type="hidden" name="_method" value="DELETE">
+    {!! Form::submit('Delete Post', ['class'=>'btn btn-danger']) !!}
 
-        <input type="submit" name="submit" value="Delete">
         {{csrf_field()}}
-    </form>
+
+    {!! Form::close() !!}
 
 @endsection
