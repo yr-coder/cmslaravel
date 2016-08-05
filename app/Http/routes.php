@@ -7,6 +7,7 @@ use App\Post;
 use App\Tag;
 use App\User;
 use App\Video;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -350,3 +351,26 @@ Route::get('/contact', function () {
 
 Route::resource('/posts', 'PostsController');
 
+Route::get('/dates', function (){
+
+    echo Carbon::now()->addWeek(2)->diffForHumans();
+
+});
+
+Route::get('/getname', function (){
+
+    $user = User::find(1);
+
+    echo $user->name;
+
+});
+
+Route::get('/setname', function (){
+
+    $user = User::findOrFail(1);
+
+    $user->name = 'william';
+
+    $user->save();
+
+});
