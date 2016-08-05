@@ -6,5 +6,7 @@
 
     <h3>{{$post->content}}</h3>
 
+    <img src='{{$post->path}}' alt="" width="400">
+
 
 @endsection

@@ -22,7 +22,6 @@ class PostsController extends Controller
 
         return view('posts.index', compact('posts'));
 
-
     }
 
     /**
@@ -44,8 +43,28 @@ class PostsController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        
+        $input = $request->all();
+        
+        if ($file = $request->file('file')){
+            $name = $file->getClientOriginalName();
+            
+            $file->move('images', $name);
+            
+            $input['path'] = $name;
+        }
 
-        Post::create($request->all());
+        Post::create($input);
+        
+        
+//        $file = $request->file('file');
+//
+//        echo '<br>';
+//
+//        echo $file->getClientSize();
+
+
+//        Post::create($request->all());
 
 //        $input = $request->all();
 //

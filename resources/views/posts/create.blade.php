@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
     <h1>Create Post</h1>
 
     {{--<form action="/posts" method="post">--}}
-    {!! Form::open(['method'=>'POST', 'action'=>'PostsController@store']) !!}
+    {!! Form::open(['method'=>'POST', 'action'=>'PostsController@store', 'files'=>true]) !!}
+
+
 
 
     <div class="form-group">
@@ -14,6 +17,12 @@
         <br>
         {!! Form::label('content', 'Content:') !!}
         {!! Form::textarea('content', null, ['class'=>'form-control']) !!}
+
+    </div>
+
+    <div class="form-group">
+
+        {!! Form::file('file', ['class'=>'form-control']) !!}
 
     </div>
 
